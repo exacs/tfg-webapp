@@ -1,0 +1,11 @@
+{
+  "name": "tfg-webapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:exacs/tfg-webapp.git",
+  "author": "Carlos Saito <c.saito.style@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.5.0"
+  }
+}
