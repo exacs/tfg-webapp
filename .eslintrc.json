@@ -1,0 +1,8 @@
+{
+  "plugins": [],
+  "rules": {
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}
