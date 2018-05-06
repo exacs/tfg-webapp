@@ -6,7 +6,8 @@
   "author": "Carlos Saito <c.saito.style@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:snapshot": "jest --config jest.config.snapshot.js"
   },
   "dependencies": {
     "eslint": "^4.19.1",

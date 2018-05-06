@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`r.recognize("Paris") returns an array of results 1`] = `
+Array [
+  Object {
+    "description": "capital city of France",
+    "id": "Q90",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q90",
+  },
+  Object {
+    "description": "son of Priam, king of Troy",
+    "id": "Q167646",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q167646",
+  },
+  Object {
+    "description": "county seat of Lamar County, Texas, United States",
+    "id": "Q830149",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q830149",
+  },
+  Object {
+    "description": "Italian artist",
+    "id": "Q366081",
+    "label": "Paris Bordone",
+    "uri": "http://www.wikidata.org/entity/Q366081",
+  },
+  Object {
+    "description": "county seat of Bourbon County, Kentucky, United States",
+    "id": "Q3181341",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q3181341",
+  },
+  Object {
+    "description": "city in Tennessee, United States",
+    "id": "Q1018504",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q1018504",
+  },
+  Object {
+    "description": "genus of plants",
+    "id": "Q162121",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q162121",
+  },
+]
+`;
+
+exports[`r.recognize("Paris", "place") returns an array of results 1`] = `
+Array [
+  Object {
+    "description": "capital city of France",
+    "id": "Q90",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q90",
+  },
+  Object {
+    "description": "county seat of Lamar County, Texas, United States",
+    "id": "Q830149",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q830149",
+  },
+  Object {
+    "description": "county seat of Bourbon County, Kentucky, United States",
+    "id": "Q3181341",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q3181341",
+  },
+  Object {
+    "description": "city in Tennessee, United States",
+    "id": "Q1018504",
+    "label": "Paris",
+    "uri": "http://www.wikidata.org/entity/Q1018504",
+  },
+]
+`;
