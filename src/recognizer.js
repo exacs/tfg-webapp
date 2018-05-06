@@ -1,5 +1,5 @@
-const wikidata = require('./wikidata');
-const psql = require('./psql');
+const wikidata = require('../lib/wikidata');
+const psql = require('../lib/psql');
 
 function recognize(text, type) {
   if (!text) {

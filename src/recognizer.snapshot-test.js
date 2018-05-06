@@ -1,4 +1,4 @@
-const Recognizer = require('../lib/recognizer');
+const Recognizer = require('./recognizer');
 
 test('r.recognize("Paris") returns an array of results', () => {
   const r = Recognizer();

@@ -1,6 +1,6 @@
 const Recognizer = require('./recognizer');
-jest.mock('./wikidata');
-jest.mock('./psql');
+jest.mock('../lib/wikidata');
+jest.mock('../lib/psql');
 
 test('Recognizer() returns an object', () => {
   expect(Recognizer()).toBeInstanceOf(Object);
