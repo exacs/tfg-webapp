@@ -1,8 +1,14 @@
 {
-  "plugins": [],
+  "plugins": [
+    "react"
+  ],
   "rules": {
   },
   "parserOptions": {
-    "ecmaVersion": 2017
+    "sourceType": "module",
+    "ecmaVersion": 2017,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
