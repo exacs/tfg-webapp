@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "NODE_ENV=development node index.js",
     "test": "jest --watch",
-    "test:snapshot": "jest --config jest.config.snapshot.js"
+    "test:snapshot": "jest --config jest.config.snapshot.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
     "eslint": "^4.19.1",
@@ -28,6 +29,7 @@
     "webpack-merge": "^4.1.2"
   },
   "devDependencies": {
+    "@storybook/react": "^3.4.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
