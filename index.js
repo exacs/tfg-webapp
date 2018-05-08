@@ -7,6 +7,24 @@ const mount = require('koa-mount');
 
 app.use(_.get('/', async ctx => {
   console.log('ENDPOINT /');
+
+  ctx.body = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/static/general.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript" src="/static/dashboard.bundle.js"></script>
+  </body>
+</html>
+`;
 }));
 
 app.use(_.get('/query', async ctx => {
