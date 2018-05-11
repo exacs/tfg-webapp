@@ -40,26 +40,38 @@ export default class Map extends React.Component {
       colorAxis: {
         min: 0,
         max: 1,
-        stops: [[0, '#F1EEF6'], [1, '#500007']],
+        stops: [[0, '#F1EEF6'], [1, '#500007'], [2, '#ff0000']],
         labels: {
           format: '{value}%'
         }
       },
-      series: [{
-        name: 'Country',
-        keys: ['hc-key', 'value', 'reg'],
-        joinBy: ['hc-key'],
-        data: [
-          ['no', 1, 2],
-          ['se', 1, 2],
-          ['dk', 1, 0],
-          ['fi', 1, 0]
-        ],
-        tooltip: {
-          headerFormat: '',
-          pointFormat: '{point.name}'
+      series: [
+        {
+          allAreas: true,
+        },
+        {
+          mapData: this.state.data,
+          allAreas: false,
+          name: 'Country',
+          data: [
+            ['no', 1],
+            ['se', 1],
+            ['dk', 1],
+            ['fi', 1]
+          ],
+
+        },
+        {
+          mapData: this.state.data,
+          allAreas: false,
+          name: 'Country2',
+          data: [
+            ['es', 2],
+            ['jp', 2],
+          ],
+
         }
-      }]
+      ],
     }
 
     console.log(options.chart.map === null);
