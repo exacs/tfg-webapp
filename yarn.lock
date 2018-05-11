@@ -2434,7 +2434,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-class@^15.6.2:
+create-react-class@^15.5.3, create-react-class@^15.6.2:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   dependencies:
@@ -4040,6 +4040,22 @@ hawk@~6.0.2:
 he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+highcharts-react-official@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/highcharts-react-official/-/highcharts-react-official-1.1.0.tgz#ba421754c6c7a9c8e005054cf5d3156efce3ef5a"
+  dependencies:
+    create-react-class "^15.5.3"
+    highcharts "^6.0.1"
+    highstock-release "^6.0.1"
+
+highcharts@^6.0.1, highcharts@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.1.0.tgz#115a6ee10ad36a53d9913f1030c6d46da16c7cb5"
+
+highstock-release@^6.0.1:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/highstock-release/-/highstock-release-6.0.4.tgz#c6d982247d97310522cd74b6c2c1f4ae98633e09"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
