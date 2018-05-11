@@ -1,35 +1,35 @@
 import React from 'react';
+import styled from 'styled-components';
+import YearSelector from './year-selector';
 
 class RangeSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      min: 2007,
-      max: 2018
+      selected: 2017
     }
 
-    this.handleChangeMin = this.handleChangeMin.bind(this);
-    this.handleChangeMax = this.handleChangeMax.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleChangeMin(event) {
-    this.setState({ min: event.target.value }, () => {
-      this.props.onChange(this.state);
-    });
-  }
+  handleSelect(option) {
+    this.setState({selected: option}, () => {
+      const selected = this.state.selected;
 
-  handleChangeMax(event) {
-    this.setState({ max: event.target.value }, () => {
-      this.props.onChange(this.state);
+      const start = new Date(`${selected}-01-01T00:00:00`);
+      const end = new Date(`${selected}-12-31T23:59:59`);
+      this.props.onChange(start, end);
     });
   }
 
   render() {
     return (
-      <div>
-        <input type='text' onChange={this.handleChangeMin} />
-        <input type='text' onChange={this.handleChangeMax} />
-      </div>
+      <YearSelector
+        min={2007}
+        max={2017}
+        selected={this.state.selected}
+        onSelect={this.handleSelect}
+      />
     );
   }
 }
