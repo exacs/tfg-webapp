@@ -74,8 +74,6 @@ export default class Map extends React.Component {
       ],
     }
 
-    console.log(options.chart.map === null);
-
     return (
       <HighchartsReact
         highcharts={Highcharts}
@@ -85,29 +83,3 @@ export default class Map extends React.Component {
     );
   }
 }
-
-
-const options = {
-  title: {
-    text: 'Highlightmaps basic demo'
-  },
-
-  colorAxis: {
-    min: 0
-  },
-
-  series: [{
-    data: [],
-    name: 'Random data',
-    states: {
-      hover: {
-        color: '#BADA55'
-      }
-    },
-    dataLabels: {
-      enabled: true,
-      format: '{point.name}'
-    }
-  }]
-}
-
