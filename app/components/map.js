@@ -38,11 +38,15 @@ export default class Map extends React.Component {
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)'
       },
       colorAxis: {
-        min: 0,
-        max: 1,
-        stops: [[0, '#F1EEF6'], [1, '#500007'], [2, '#ff0000']],
+        min: -30000,
+        max: 30000,
+        stops: [
+          [0.0, '#cc0000'],
+          [0.5, '#cccccc'],
+          [1.0, '#0000cc']
+        ],
         labels: {
-          format: '{value}%'
+          format: '{value}'
         }
       },
       series: [
@@ -52,24 +56,8 @@ export default class Map extends React.Component {
         {
           mapData: this.state.data,
           allAreas: false,
-          name: 'Country',
-          data: [
-            ['no', 1],
-            ['se', 1],
-            ['dk', 1],
-            ['fi', 1]
-          ],
-
-        },
-        {
-          mapData: this.state.data,
-          allAreas: false,
           name: 'Country2',
-          data: [
-            ['es', 2],
-            ['jp', 2],
-          ],
-
+          data: this.props.series
         }
       ],
     }
