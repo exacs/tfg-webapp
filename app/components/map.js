@@ -26,14 +26,15 @@ export default class Map extends React.Component {
     const options = {
       title: {text: this.state.data === null ? 'Loading...' : 'World map'},
       chart: {
-        map: this.state.data
+        map: this.state.data,
+        height: '800px'
       },
       dataLabels: {
         enabled: false
       },
       legend: {
-        layout: 'horizontal',
-        align: 'center',
+        layout: 'vertical',
+        align: 'left',
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255, 255, 255, 0.85)'
       },
