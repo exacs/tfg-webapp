@@ -5,6 +5,8 @@ const _ = require('koa-route');
 const serve = require('koa-static');
 const mount = require('koa-mount');
 
+const getData = require('./src/getData');
+
 app.use(_.get('/', async ctx => {
   console.log('ENDPOINT /');
 
@@ -28,7 +30,7 @@ app.use(_.get('/', async ctx => {
 }));
 
 app.use(_.get('/query', async ctx => {
-  console.log('ENDPOINT /query');
+  ctx.body = await getData(ctx.query.year, ctx.query.dimension);
 }));
 
 app.use(mount('/static', serve(path.join(__dirname, 'static'))));
