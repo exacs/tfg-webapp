@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { hot } from 'react-hot-loader';
+import fetch from 'isomorphic-fetch';
 
 import Map from './map';
 import RangeSelector from './range-selector';
@@ -46,26 +47,37 @@ class App extends React.Component {
 
     this.state = {
       dimension: 'country',
-      id: 0
+      year: 2016,
+      data: []
     }
+
+    this.fetchData = this.fetchData.bind(this);
   }
 
   handleChangeDimension(dimension) {
     this.setState({ dimension });
   }
 
-  handleChangeDate() {
-    this.setState(prevState => ({id: prevState.id + 1 }));
+  handleChangeDate(year) {
+    this.setState({ year }, this.fetchData);
+  }
+
+  fetchData() {
+    fetch(`/query?year=${this.state.year}`)
+      .then(response => response.json())
+      .then(data => this.setState({ data }))
+      .catch(e => {console.log(e)});
   }
 
   render() {
-    const selectedData = data[this.state.id % data.length];
     return (
       <Container>
         <Main>
-          <Map series={selectedData} />
+          <Map series={this.state.data} />
           <Floater>
-            <RangeSelector onChange={() => this.handleChangeDate()} />
+            <RangeSelector
+              onChange={(selected) => this.handleChangeDate(selected)}
+            />
           </Floater>
         </Main>
         <Aside>
@@ -73,7 +85,7 @@ class App extends React.Component {
             name='dimension'
             options={[
               { text: 'Country', value: 'country' },
-              { text: 'Supranational organization', value: 'supra'}
+              // { text: 'Supranational organization', value: 'supra'}
             ]}
             selected={this.state.dimension}
             onChange={(dimension) => this.handleChangeDimension(dimension)}

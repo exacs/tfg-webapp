@@ -18,7 +18,8 @@ class RangeSelector extends React.Component {
 
       const start = new Date(`${selected}-01-01T00:00:00`);
       const end = new Date(`${selected}-12-31T23:59:59`);
-      this.props.onChange(start, end);
+
+      this.props.onChange(selected);
     });
   }
 
