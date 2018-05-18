@@ -51,7 +51,6 @@ class App extends React.Component {
   }
 
   fetchData() {
-    console.log(this.state.year);
     fetch(`/query?year=${this.state.year}`)
       .then(response => response.json())
       .then(data => this.setState({ data }))
@@ -63,7 +62,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <Container>
         <Main>
