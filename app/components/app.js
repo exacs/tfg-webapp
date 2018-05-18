@@ -29,18 +29,6 @@ const Floater = styled.div`
   width: 100%;
 `;
 
-const d1 = [
-  ['es', 10000]
-];
-
-const d2 = [
-  ['fr', -1000],
-  ['ma', 1000],
-  ['se', 15000]
-]
-
-const data = [d1, d2];
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -63,13 +51,19 @@ class App extends React.Component {
   }
 
   fetchData() {
+    console.log(this.state.year);
     fetch(`/query?year=${this.state.year}`)
       .then(response => response.json())
       .then(data => this.setState({ data }))
       .catch(e => {console.log(e)});
   }
 
+  componentDidMount() {
+    this.fetchData();
+  }
+
   render() {
+    console.log(this.state.data);
     return (
       <Container>
         <Main>
