@@ -5,7 +5,7 @@ import Cloropeth from './maps/cloropeth';
 import groupBy from 'lodash/fp/groupBy';
 import flatten from 'lodash/fp/flatten';
 
-function transform(movements) {
+function transform(movements, country) {
   const vectorsToAmounts = ({origin, destination, amount}) => [
     {country: origin, amount: -amount},
     {country: destination, amount: amount}
@@ -17,7 +17,12 @@ function transform(movements) {
     amount: amounts[key].reduce((acc, cur) => acc + cur.amount, 0)
   }))
 
-  const countries = sumAmounts(groupByCountry(movements.map(vectorsToAmounts)));
+  const filteredMovements =
+    country ?
+    movements.filter(m => m.origin === country || m.destination === country) :
+    movements;
+
+  const countries = sumAmounts(groupByCountry(filteredMovements.map(vectorsToAmounts)));
 
   return countries;
 }
@@ -32,17 +37,24 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
-      view: 'table'
+      view: 'table',
+      country: null,
     }
   }
 
+  selectCountry(country) {
+    this.setState({country});
+  }
+
   render() {
-    const series = transform(this.props.movements);
+    const series = transform(this.props.movements, this.state.country);
     const ViewComponent = views[this.state.view];
 
     return (
       <ViewComponent
         series={series}
+        selectedCountry={this.state.country}
+        onSelect={country => this.selectCountry(country)}
       />
     );
   }
