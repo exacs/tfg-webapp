@@ -7,7 +7,7 @@ import mapData from './map-data';
 
 HC_map(Highcharts);
 
-export default class Map extends React.Component {
+export default class Cloropeth extends React.Component {
   constructor(props) {
     super(props);
 
