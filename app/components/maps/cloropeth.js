@@ -14,12 +14,22 @@ export default class Cloropeth extends React.Component {
     this.state = {
       data: null
     }
+
+    this.clickCountry = this.clickCountry.bind(this);
   }
 
   componentDidMount() {
     fetch('https://code.highcharts.com/mapdata/custom/world-lowres.geo.json')
       .then(r => r.json())
       .then(data => {this.setState({ data })})
+  }
+
+  clickCountry(country) {
+    if (country === this.props.selectedCountry) {
+      this.props.onSelect(null);
+    } else {
+      this.props.onSelect(country);
+    }
   }
 
   render() {
@@ -50,6 +60,17 @@ export default class Cloropeth extends React.Component {
         ],
         labels: {
           format: '{value}'
+        }
+      },
+      plotOptions: {
+        series: {
+          point: {
+            events: {
+              click: ({point}) => {
+                this.clickCountry(point['hc-key']);
+              }
+            }
+          }
         }
       },
       series: [
