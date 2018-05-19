@@ -37,7 +37,7 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
-      view: 'table',
+      view: 'cloropeth',
       country: null,
     }
   }
@@ -47,7 +47,23 @@ class Map extends React.Component {
   }
 
   render() {
-    const series = transform(this.props.movements, this.state.country);
+    const filter = this.props.filter;
+    const countries = this.props.countries;
+    const getCountry = (code) => countries.filter(c => c.country === code)[0] || {gdp: 0};
+
+    let movements;
+
+    if (filter === 'poor-to-rich') {
+      movements = this
+        .props.movements
+        .filter(mov => getCountry(mov.origin).gdp < 100000)
+        .filter(mov => getCountry(mov.destination).gdp > 1000000)
+    } else {
+      movements = this.props.movements;
+    }
+
+    console.log(`We have ${movements.length} movements`);
+    const series = transform(movements, this.state.country);
     const ViewComponent = views[this.state.view];
 
     return (
