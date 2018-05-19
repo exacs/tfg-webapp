@@ -34,9 +34,11 @@ class App extends React.Component {
     super(props);
 
     this.state = {
+      filter: 'all',
       dimension: 'country',
       year: 2016,
-      data: []
+      data: [],
+      countries: []
     }
 
     this.fetchData = this.fetchData.bind(this);
@@ -44,6 +46,10 @@ class App extends React.Component {
 
   handleChangeDimension(dimension) {
     this.setState({ dimension });
+  }
+
+  handleChangeFilter(filter) {
+    this.setState({ filter });
   }
 
   handleChangeDate(year) {
@@ -55,6 +61,11 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({ data }))
       .catch(e => {console.log(e)});
+
+    fetch(`/countries?year=${this.state.year}`)
+      .then(response => response.json())
+      .then(countries => this.setState({ countries }))
+      .catch(e => {console.log(e)});
   }
 
   componentDidMount() {
@@ -65,7 +76,11 @@ class App extends React.Component {
     return (
       <Container>
         <Main>
-          <Map movements={this.state.data} />
+          <Map
+            filter={this.state.filter}
+            movements={this.state.data}
+            countries={this.state.countries}
+          />
           <Floater>
             <RangeSelector
               onChange={(selected) => this.handleChangeDate(selected)}
@@ -73,11 +88,21 @@ class App extends React.Component {
           </Floater>
         </Main>
         <Aside>
+          <h2>Choose a filter</h2>
+          <OptionGroup
+            name='filter'
+            options={[
+              { text: 'All', value: 'all' },
+              { text: 'From poor to rich', value: 'poor-to-rich' }
+            ]}
+            selected={this.state.filter}
+            onChange={(filter) => this.handleChangeFilter(filter)}
+          />
+          <hr />
           <OptionGroup
             name='dimension'
             options={[
               { text: 'Country', value: 'country' },
-              // { text: 'Supranational organization', value: 'supra'}
             ]}
             selected={this.state.dimension}
             onChange={(dimension) => this.handleChangeDimension(dimension)}
