@@ -23,6 +23,8 @@ export default class Cloropeth extends React.Component {
   }
 
   render() {
+    const series = this.props.series.map(({country, amount}) => [country, amount]);
+
     const options = {
       title: {text: this.state.data === null ? 'Loading...' : 'World map'},
       chart: {
@@ -58,7 +60,7 @@ export default class Cloropeth extends React.Component {
           mapData: this.state.data,
           allAreas: false,
           name: 'Country2',
-          data: this.props.series
+          data: series
         }
       ],
     }
