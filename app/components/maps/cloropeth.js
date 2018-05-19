@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import HC_map from 'highcharts/modules/map';
 import HighchartsReact from 'highcharts-react-official';
 import fetch from 'isomorphic-fetch';
-import mapData from './map-data';
+import mapData from './data';
 
 HC_map(Highcharts);
 

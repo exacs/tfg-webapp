@@ -65,7 +65,7 @@ class App extends React.Component {
     return (
       <Container>
         <Main>
-          <Map series={this.state.data} />
+          <Map movements={this.state.data} />
           <Floater>
             <RangeSelector
               onChange={(selected) => this.handleChangeDate(selected)}
