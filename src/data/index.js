@@ -13,5 +13,7 @@ function readFile(file) {
 module.exports = {
   getData() { return readFile('movements'); },
 
-  getCountries() { return readFile('gdp'); }
+  getCountries() { return readFile('gdp'); },
+
+  getCountryNames() { return readFile('country-names'); }
 }

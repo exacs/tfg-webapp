@@ -33,7 +33,7 @@ export default class Cloropeth extends React.Component {
   }
 
   render() {
-    const series = this.props.series.map(({country, amount}) => [country, amount]);
+    const series = this.props.series.map(({code, amount}) => [code, amount]);
 
     const options = {
       title: {text: this.state.data === null ? 'Loading...' : 'World map'},
