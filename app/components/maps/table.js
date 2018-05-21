@@ -23,10 +23,29 @@ const Td = styled.td`
 class TableMap extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      sortedBy: 'name',
+      sort: 'asc'
+    }
   }
 
   render() {
     const series = this.props.series;
+    const sorted = series
+      .sort((c1, c2) => {
+        const c1s = c1[this.state.sortedBy];
+        const c2s = c2[this.state.sortedBy];
+
+        if (c1s === c2s) {
+          return 0;
+        } else if (c1s < c2s) {
+          return this.state.sort === 'asc' ? -1 : 1;
+        } else {
+          return this.state.sort === 'asc' ? 1 : -1;
+        }
+      })
+
     return (
       <Container>
         <Table>
