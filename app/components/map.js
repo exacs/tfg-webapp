@@ -37,7 +37,7 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
-      view: 'cloropeth',
+      view: 'table',
       country: null,
     }
   }
