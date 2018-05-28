@@ -42,8 +42,7 @@ class App extends React.Component {
       filter: 'all',
       dimension: 'country',
       year: 2016,
-      data: [],
-      countries: []
+      data: []
     }
 
     this.fetchData = this.fetchData.bind(this);
@@ -54,7 +53,7 @@ class App extends React.Component {
   }
 
   handleChangeFilter(filter) {
-    this.setState({ filter });
+    this.setState({ filter }, this.fetchData);
   }
 
   handleChangeDate(year) {
@@ -62,12 +61,12 @@ class App extends React.Component {
   }
 
   fetchData() {
-    fetch(`/query?year=${this.state.year}`)
+    fetch(`/query?year=${this.state.year}&filter=${this.state.filter}`)
       .then(response => response.json())
       .then(data => this.setState({ data }))
       .catch(e => {console.log(e)});
 
-    fetch(`/countries?year=${this.state.year}`)
+    fetch(`/countries`)
       .then(response => response.json())
       .then(countries => this.setState({ countries }))
       .catch(e => {console.log(e)});
@@ -100,7 +99,9 @@ class App extends React.Component {
             name='filter'
             options={[
               { text: 'All', value: 'all' },
-              { text: 'From poor to rich', value: 'poor-to-rich' }
+              { text: 'From non-free to free country', value: 'free_country' },
+              { text: 'From poor to rich', value: 'gdp_capita' },
+              { text: 'From low HDI to high HDI', value: 'hdi' }
             ]}
             selected={this.state.filter}
             onChange={(filter) => this.handleChangeFilter(filter)}
