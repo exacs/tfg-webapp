@@ -7,19 +7,20 @@ import flatten from 'lodash/fp/flatten';
 
 function transform(movements, country) {
   const vectorsToAmounts = ({origin, destination, amount}) => [
-    {country: origin, amount: -amount},
-    {country: destination, amount: amount}
+    {code: origin.code, name: origin.name, amount: -amount},
+    {code: destination.code, name: destination.name, amount: amount}
   ];
 
-  const groupByCountry = amounts => groupBy('country')(flatten(amounts));
+  const groupByCountry = amounts => groupBy('code')(flatten(amounts));
   const sumAmounts = amounts => Object.keys(amounts).map(key => ({
-    country: key,
+    code: key,
+    name: amounts[key][0].name,
     amount: amounts[key].reduce((acc, cur) => acc + cur.amount, 0)
   }))
 
   const filteredMovements =
     country ?
-    movements.filter(m => m.origin === country || m.destination === country) :
+    movements.filter(m => m.origin.code === country || m.destination.code === country) :
     movements;
 
   const countries = sumAmounts(groupByCountry(filteredMovements.map(vectorsToAmounts)));
@@ -37,7 +38,7 @@ class Map extends React.Component {
     super(props);
 
     this.state = {
-      view: 'cloropeth',
+      view: 'table',
       country: null,
     }
   }

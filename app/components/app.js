@@ -9,13 +9,18 @@ import OptionGroup from './option-group';
 
 const Container = styled.div`
   width: 100%;
-  height: 800px;
+  height: 100vh;
   display: flex;
 `;
 
 const Main = styled.main`
   position: relative;
+  height: 100%;
   flex: 1 1 auto;
+`;
+
+const MapContainer = styled.div`
+  height: 100%;
 `;
 
 const Aside = styled.aside`
@@ -76,11 +81,13 @@ class App extends React.Component {
     return (
       <Container>
         <Main>
-          <Map
-            filter={this.state.filter}
-            movements={this.state.data}
-            countries={this.state.countries}
-          />
+          <MapContainer>
+            <Map
+              filter={this.state.filter}
+              movements={this.state.data}
+              countries={this.state.countries}
+            />
+          </MapContainer>
           <Floater>
             <RangeSelector
               onChange={(selected) => this.handleChangeDate(selected)}
