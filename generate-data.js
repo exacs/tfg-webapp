@@ -12,7 +12,7 @@ function generateMovement() {
   return {
     origin: generateCountry(),
     destination: generateCountry(),
-    amount: parseInt(Math.random() * MAX_AMOUNT * 2 - MAX_AMOUNT)
+    amount: parseInt(Math.random() * MAX_AMOUNT)
   }
 }
 

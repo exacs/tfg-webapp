@@ -30,7 +30,7 @@ app.use(_.get('/', async ctx => {
 }));
 
 app.use(_.get('/query', async ctx => {
-  ctx.body = await getData(ctx.query.year, ctx.query.dimension);
+  ctx.body = await getData(ctx.query.year, ctx.query.filter);
 }));
 
 app.use(_.get('/countries', async ctx => {
