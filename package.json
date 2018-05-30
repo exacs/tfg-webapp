@@ -6,6 +6,7 @@
   "author": "Carlos Saito <c.saito.style@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "npm run dev",
     "dev": "NODE_ENV=development node index.js",
     "test": "jest --watch",
     "test:snapshot": "jest --config jest.config.snapshot.js",
