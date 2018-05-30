@@ -37,7 +37,7 @@ app.use(_.get('/countries', async ctx => {
   ctx.body = await getCountries(ctx.query.year, ctx.query.dimension);
 }));
 
-app.use(mount('/static', serve(path.join(__dirname, 'static'))));
+app.use(mount('/static', serve(path.join(__dirname, 'app/static'))));
 
 if (process.env.NODE_ENV === 'development') {
   const middleware = require('koa-webpack');
